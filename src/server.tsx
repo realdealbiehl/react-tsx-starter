@@ -1,4 +1,4 @@
-﻿/// <reference path="../typings/tsd.d.ts"/>
+﻿/// <reference path="../typings/main.d.ts"/>
 
 import express = require('express');
 import http = require('http');
@@ -32,7 +32,7 @@ app.get('/help', function (req, res) {
 
 app.use(function(req, res, next) {
     const location = createLocation(req.url);
-    
+
     match({ routes, location }, (error, redirectLocation, renderProps: any) => {
         var html = ReactDOMServer.renderToString(<RouterContext {...renderProps} />)
         return res.render('main', { content: html, title: 'Home', min: min });
